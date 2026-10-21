@@ -478,6 +478,12 @@ class JrJacksonTest < Test::Unit::TestCase
     end
   end
 
+  def test_malformed_json
+    assert_raise JrJackson::ParseError do
+      JrJackson::Json.load("[1,")
+    end
+  end
+
   def test_deserializer_unexpected_token_error_path
     require 'java'
 
